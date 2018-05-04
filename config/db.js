@@ -1,3 +1,4 @@
+
 const config = require('./index.js');
 const initOptions = {
   // optional database connection args

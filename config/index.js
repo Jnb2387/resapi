@@ -16,12 +16,21 @@
 // columns for each table in that query *must* be the same.
 //
 
+
+// var username = "postgres";
+// var host = "localhost";
+// //var host = "67.165.241.133";
+// var database = "postgres";
+// var password = 'navy23';
+
 module.exports = {
     schemes: ['http'],
-    host: 'localhost',
-    port: 8123,
+    host: 'localhost:8011',
+    port: 8011,
     db: {
-        postgis: 'postgres://user:password@server/database'
+        // postgis: 'postgres://wcfwexeohxshan:6b4b363209a965ff7996c452684423ad86fffd8a77aea608cd4affc0b7f61944@ec2-54-235-220-220.compute-1.amazonaws.com/d5qmn2ibbpuu9d'
+        // postgis: "postgres://" + username + ":" + password + "@" + host + "/" + database
+        postgis: "postgres://postgres:navy23@35.188.18.159:5432/postgres"
     },
     cache: {
         expiresIn: 30 * 1000,

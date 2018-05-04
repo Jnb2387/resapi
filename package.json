@@ -16,9 +16,11 @@
     "hapi-swagger": "^8.0.0",
     "inert": "^4.2.1",
     "joi": "^13.0.1",
+    "nodemon": "^1.14.11",
     "pg-promise": "^7.3.2",
     "squel": "^5.12.0",
-    "vision": "^4.1.1"
+    "vision": "^4.1.1",
+    "vt-pbf": "^3.1.0"
   },
   "eslintConfig": {
     "env": {

@@ -10,18 +10,18 @@ function formatSQL(request) {
 
   var sql = squel
     .select()
-    .from(request.params.table)
-    .field(extent, 'extent')
-    .where(request.query.filter ? request.query.filter : '')
+    .from('information_schema.columns')
+    .field('table_catalog,' + ' table_name'+ ', column_name' +", col_description(('"+ request.query.schema+"'||'.'||'" + request.query.filter+"')::regclass::oid, ordinal_position) AS column_comment"+', data_type'+', character_maximum_length'+', is_nullable')
+    .where("table_schema = '"+request.query.schema +  "' AND table_name = '" + request.query.filter+"'")
     .limit(10);
-
+console.log(sql.toString())
   return sql.toString();
 }
 
 module.exports = [
   {
     method: 'GET',
-    path: '/bbox/v1/{table}',
+    path: '/findschema/v1/{table}',
     config: {
       description: 'feature extent',
       notes: 'Gets the bounding box of a feature(s).',
@@ -29,7 +29,6 @@ module.exports = [
       validate: {
         params: {
           table: Joi.string()
-            .required()
             .description('name of the table'),
         },
         query: {
@@ -38,9 +37,8 @@ module.exports = [
             .description(
               'The geometry column of the table. The default is <em>geom</em>.',
             ),
-          srid: Joi.number()
-            .integer()
-            .default(4326)
+          schema: Joi.string()
+            .default('gis')
             .description(
               'The SRID for the returned centroid. The default is <em>4326</em> WGS84 Lat/Lng.',
             ),
@@ -56,6 +54,7 @@ module.exports = [
           .query(formatSQL(request))
           .then(function(data) {
             reply(data);
+            // console.log(data)
           })
           .catch(function(err) {
             reply({

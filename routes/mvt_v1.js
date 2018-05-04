@@ -24,7 +24,7 @@ function formatSQL(request) {
     .field(
       `
 			ST_AsMVTGeom(
-				ST_Transform(${request.query.geom_column}, 3857),
+				ST_Transform(ST_Simplify(${request.query.geom_column},0.01), 3857),
 				ST_MakeEnvelope(${smBounds.join(',')}, 3857),
 				4096,
 				0,

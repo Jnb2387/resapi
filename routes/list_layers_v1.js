@@ -3,6 +3,7 @@ const db = require('../config/db.js');
 const squel = require('squel').useFlavour('postgres');
 
 function formatSQL() {
+
   return squel
     .select()
     .from('geometry_columns')
