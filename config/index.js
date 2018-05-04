@@ -25,11 +25,9 @@
 
 module.exports = {
     schemes: ['http'],
-    host: '0.0.0.0',
+    host: 'localhost:8011'||'0.0.0.0',
     port: process.env.PORT || 8011,
     db: {
-        // postgis: 'postgres://wcfwexeohxshan:6b4b363209a965ff7996c452684423ad86fffd8a77aea608cd4affc0b7f61944@ec2-54-235-220-220.compute-1.amazonaws.com/d5qmn2ibbpuu9d'
-        // postgis: "postgres://" + username + ":" + password + "@" + host + "/" + database
         postgis: "postgres://postgres:navy23@35.188.18.159:5432/postgres"
     },
     cache: {
