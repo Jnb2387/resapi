@@ -17,18 +17,13 @@
 //
 
 
-// var username = "postgres";
-// var host = "localhost";
-// //var host = "67.165.241.133";
-// var database = "postgres";
-// var password = 'navy23';
 
 module.exports = {
     schemes: ['http'],
     host: 'localhost:8011'||'0.0.0.0',
     port: process.env.PORT || 8011,
     db: {
-        postgis: "postgres://postgres:navy23@35.188.18.159:5432/postgres"
+        postgis: ""
     },
     cache: {
         expiresIn: 30 * 1000,
